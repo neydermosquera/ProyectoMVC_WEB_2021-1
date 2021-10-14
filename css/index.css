@@ -1,0 +1,15 @@
+.barranavegacion{
+    background-color: #D5DBDB;
+    color: white;
+}
+
+a{
+    color: white;
+    padding-left: 15px;
+    padding-right: 35px;
+    font-size: 20px;
+}
+
+li{
+    padding-right: 35px;
+}
