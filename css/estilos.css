@@ -17,7 +17,7 @@ li{
 .contenedorinicio{
     background-color: #BFC9CA;
     margin-top: 40px;
-    height: 500px;
+    height: 550px;
     border-radius: 15px;
     margin-bottom: 100px;
 }
@@ -38,11 +38,12 @@ li{
     margin-bottom: 100px;
     padding-top: 30px;
     padding-bottom: 25px;
-    margin-right: 0;
-    margin-left: 0;
-    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    width: auto;
 
 }
+
 .inicio{
     margin-top: 45px;
     padding-top: 50px;
