@@ -21,6 +21,15 @@ li{
     border-radius: 15px;
     margin-bottom: 100px;
 }
+.contenedorregistro{
+    background-color: #BFC9CA;
+    margin-top: 40px;
+    height: 1000px;
+    border-radius: 15px;
+    margin-bottom: 100px;
+    padding-top: 30px;
+
+}
 .inicio{
     margin-top: 45px;
     padding-top: 50px;
@@ -50,6 +59,13 @@ img{
 
 
   
+.form-control-feedback {
+    position: absolute;
+    padding: 10px;
+    pointer-events: none;
+    color: gray;
+  }
+  
   .form-control {
     padding-left: 30px!important;
     border-radius: 10px;
@@ -58,14 +74,13 @@ img{
   select{
     font-size: 13px;
     font-weight: 400;
-    color: #444;
     line-height: 2;
     padding: .4em 1.4em .3em .8em;
-    width: 80%;
+    width: 100%;
     max-width: 100%; 
-    border: 2px solid #aaa;
+    border: 1px solid #aaa;
     box-shadow: 0 1px 0 1px rgba(0,0,0,.03);
-    border-radius: .3em;
+    border-radius: 8px;
     background-color: #fff;
     background-position: right .7em top 50%, 0 0;
     background-size: .65em auto, 100%;
@@ -155,6 +170,7 @@ label{
     border-radius: 20px;
     justify-content: center;
     box-shadow: 2px 2px 2px 2px  rgb(170, 172, 169);
+    background-color: #3498DB;
 }
 
 .principal{
@@ -178,5 +194,6 @@ label{
     justify-content: center;
     box-shadow: 5px 5px 5px 5px  rgb(224, 101, 101);
 }
+
 
 
