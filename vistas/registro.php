@@ -1,7 +1,10 @@
 <!--Div Registro!-->
 
-<div class="container contenedorregistro" data-namespace="inicio">
-        <section class="container col-sm-7 principal">
+<div class="container contenedorregistro" data-namespace="registro">
+        <section class="container col-sm-11 principal 
+        margin-left: 10px;
+        margin-right: 10px;
+        ">
             <br>
             <div class="p-1 mb-1  text-white title">
             <h3 class=" text-center">Registro de Usuario</h3>
