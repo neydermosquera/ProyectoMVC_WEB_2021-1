@@ -30,6 +30,19 @@ li{
     padding-top: 30px;
 
 }
+.contenedorlistado{
+    background-color: #BFC9CA;
+    margin-top: 40px;
+    height: auto;
+    border-radius: 15px;
+    margin-bottom: 100px;
+    padding-top: 30px;
+    padding-bottom: 25px;
+    margin-right: 0;
+    margin-left: 0;
+    width: 100%;
+
+}
 .inicio{
     margin-top: 45px;
     padding-top: 50px;
@@ -176,11 +189,12 @@ label{
 .principal{
     border-radius: 20px;
     justify-content: center;
-    box-shadow: 10px 10px 10px 10px  rgb(170, 172, 169);
+    box-shadow: 10px 15px 10px 15px  rgb(139, 141, 137);
    margin-top: 35px;
    margin-bottom: 35px;
    padding-bottom: 25px;
    background-color: white;
+   width: 100%;
 }
 
 .boton{
@@ -197,3 +211,61 @@ label{
 
 
 
+
+
+
+
+.contenedor{
+    text-align: center;
+    margin-bottom: 50px;
+    margin-left: 5%;
+    margin-right: 5%;
+
+}
+.contenedor1{
+    margin-top: 20px;
+    padding-top: 20px;
+}
+.contenedor2{
+    text-align: right;
+    margin-top: 1px;
+    padding-left: 5px;
+}
+
+
+p{
+    margin: 0;
+    font-size: 20px;
+}
+
+.parrafo{
+    color: white;
+}
+
+h2, h3{
+    font-size: 40px;
+    color: white;
+}
+
+button{
+    width: 220px;
+    height: 50px;
+    border-radius: 20px;
+}
+
+.boton{
+    border-radius: 20px;
+    justify-content: center;
+    box-shadow:  2px 2px 2px 2px   rgb(156, 238, 115);
+}
+
+.botonvolver{
+    border-radius: 20px;
+    justify-content: center;
+    box-shadow: 2px 2px 2px 2px  rgb(224, 101, 101);
+}
+
+.table{
+    background-color: white;
+    border-radius: 10px;
+}
