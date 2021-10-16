@@ -2,7 +2,7 @@
 
 <?php
 
-    
+
 
     $user = "root";
     $password = "1234";
@@ -11,13 +11,13 @@
 
     $conexion = new mysqli($server, $user, $password, $db);
 
-    //$departamentos = "SELECT id, nombre FROM departamento";
-    //$ejecutarDepto = mysqli_query($conexion, $departamentos) or die(mysqli_error($conexion));
+    $departamentos = "SELECT id, nombre FROM departamento";
+    $ejecutarDepto = mysqli_query($conexion, $departamentos) or die(mysqli_error($conexion));
 
     $tipoDocumento = "SELECT id, nombre FROM tipodocumento";
     $ejecutarDocu = mysqli_query($conexion, $tipoDocumento) or die(mysqli_error($conexion));
     
-    include "llenarciudad.php";
+    
 
 ?>
 
@@ -67,15 +67,21 @@
                     </div>
 
                     <div  class="form-group has-feedback col-sm-6">
-                        <select class="form-select" id="departamentonacimiento" name="departamentonacimiento" onclick="muestraSelect(this.value)">
+                        <select class="form-select" id="departamentonacimiento" name="departamentonacimiento">
                             <option selected>Departamento</option>
-                            <?php include "llenardepartamentos.php" ?>
+                            <?php foreach ($ejecutarDepto as $opciones): ?>
+                                <option value="<?php echo $opciones['id']?>"><?php echo $opciones['nombre']?></option> 
+                            <?php endforeach ?>
                                 
                           </select>
                     </div>
 
                     <div  class="form-group has-feedback col-sm-6" id="ciudadnatal">
-                        <?php include "llenardepartamentos.php" ?>
+                    <select class="form-select" id="ciudadnacimiento" name="ciudadnacimiento">
+                    <option value="">Ciudad</option>
+                                  
+                          </select>
+
                     </div> <br>
 
 
@@ -87,8 +93,11 @@
 
                     <div  class="form-group has-feedback col-sm-6">
                         <select class="form-select" id="departamentoresidencia" name="departamentoresidencia">
-                            <option selected>Departamento</option>
-                            <?php include "llenardepartamentos.php" ?>
+                            <option value="">Departamento</option>
+                            <?php foreach ($ejecutarDepto as $opciones): ?>
+                                <option value="<?php echo $opciones['id']?>"><?php echo $opciones['nombre']?></option> 
+                            <?php endforeach ?>
+                                
                           </select>
                     </div>
 
@@ -166,29 +175,35 @@
         </section>
     </div>
 
-<script type="text/javascript">
-	function muestraSelect(str){
+    <script type="text/javascript">
+      $(document).ready(function(){
+        var discos = $('#ciudadnacimiento');
 
-        var conexion;
+        //Ejecutar accion al cambiar de opcion en el select de las bandas
+        $('#departamentonacimiento').change(function(){
+          var departamento_id = $(this).val(); //obtener el id seleccionado
 
-        if(str == ""){
-            document.getElementById("txtHint").innerHTML="";
-            return;
-        }
+          if(departamento_id !== ''){ //verificar haber seleccionado una opcion valida
 
-        if (window.XMLHttpRequest){
-				conexion = new XMLHttpRequest();  
-			}
+            /*Inicio de llamada ajax*/
+            $.ajax({
+              data: {departamento_id:departamento_id}, //variables o parametros a enviar, formato => nombre_de_variable:contenido
+              dataType: 'html', //tipo de datos que esperamos de regreso
+              type: 'POST', //mandar variables como post o get
+              url: 'llenarciudad.php' //url que recibe las variables
+            }).done(function(data){ //metodo que se ejecuta cuando ajax ha completado su ejecucion             
 
-        conexion.onreadystatechange = function(){
-            if(conexion.readyState == 4 && conexion.status == 200){
-                document.getElementById('ciudadnatal').innerHTML=conexion.responseText;
-                document.getElementById('ciudadactual').innerHTML=conexion.responseText;
-            }
-        }
+              departamento_id.html(data); //establecemos el contenido html de discos con la informacion que regresa ajax             
+              departamento_id.prop('disabled', false); //habilitar el select
+            });
+            /*fin de llamada ajax*/
 
-        conexion.open("GET", "llenarciudad.php?c="+str, true);
-        conexion.send();
-    }
-</script>
+          }else{ //en caso de seleccionar una opcion no valida
+            departamento_id.val(''); //seleccionar la opcion "- Seleccione -", osea como reiniciar la opcion del select
+            departamento_id.prop('disabled', true); //deshabilitar el select
+          }    
+        });
+
+      });
+    </script>    
 
