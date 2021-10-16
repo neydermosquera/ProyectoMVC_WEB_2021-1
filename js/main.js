@@ -30,6 +30,21 @@
 
                 manejadorRutas: function(){
 
+                    var hash = window.location.hash.substring(1) || '/',
+                        destino = rutas[hash], 
+                        xhr = new XMLHttpRequest();
+                    if(destino && destino.plantilla){
+                        xhr.addEventListener('load', function(){
+                            marco.innerHTML = this.responseText;
+                        }, false);
+
+                        xhr.open('get', destino.plantilla, true);
+                        xhr.send(null);
+
+                    }else{
+                        window.location.hash = '#/';
+                    }
+                
                 }
         };
         return libreria;
