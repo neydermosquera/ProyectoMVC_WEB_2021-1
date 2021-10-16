@@ -11,18 +11,23 @@ if(!$conexion){
     echo "Error en la conexión con el servidor";
 }
 
-$ciudad = "SELECT * FROM ciudad";
-$result = mysqli_query($conexion, $ciudad);
+$departamento_id = filter_input(INPUT_POST, 'departamento_id'); //obtenemos el parametro que viene de ajax
 
 
-echo '<select class="form-select" id="ciudadnacimiento" name="ciudadnacimiento">';
-    while($fila = mysqli_fetch_array($result)){
-        if($fila['iddepartamento']==$_GET['c']){
-            echo "<option value='".$fila['id']."'>".$fila['nombre']."</option>";
-        }
-    }
-echo '</select>';
+
+  $sql = "SELECT id, nombre from ciudad where iddepartamento = ".$departamento_id;  
+  $query = mysqli_query($conexion, $sql);
+  $filas = mysqli_fetch_all($query, MYSQLI_ASSOC); 
+  mysqli_close($conexion);
+
+     
+
+
+?>
+
+    <?php foreach($filas as $op): //creamos las opciones a partir de los datos obtenidos ?>
+    <option value="<?= $op['id'] ?>"><?= $op['nombre'] ?></option>
+    <?php endforeach; ?> 
     
         
 
-?>
