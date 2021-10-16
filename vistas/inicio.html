@@ -1,16 +1,54 @@
 <!--Div Inicio!-->
 
-<div class="container contenedorinicio" data-namespace="registro">
+<div class="container contenedorinicio animate__fadeInUp" data-namespace="registro">
     <div class="row inicio">
         <div class="col-5 textoinicio">
             <h1>SPA WEB</h1><br>
             <p class="parrafo">Proyecto desarrollado para la asignatura Programación en la Web. <br>
-    
+                <br>
+                Herramientas usadas: HTML, CSS, JS y PHP. <br>
+                Docente: Jathinson Meneses <br>
+                Estudiante: 2182078 - Neyder Fabian Mosquera Niño <br>
+
+
             </p>
         </div>
-        <div class="col-7">
-            <img src="images/19362653.jpg" alt="" width="600px">
+        <div class="col-7 img">
+            <img src="images/19362653.jpg" alt="" width="600px" id="imagen">
         </div>
+
+        <p class="parrafo uis">UNIVERSIDAD INDUSTRIAL DE SANTANDER </p>
     
     </div>
+
+    <!--<?php foreach ($ejecutarDepto as $opciones): ?>
+                                <option value="<?php echo $opciones['id']?>"><?php echo $opciones['nombre']?></option> 
+                            <?php endforeach ?>
+                            
+                            
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#departamentonacimiento').val(1);
+		recargarLista();
+
+		$('#departamentonacimiento').change(function(){
+			recargarLista();
+		});
+	})
+</script>
+<script type="text/javascript">
+
+	function recargarLista(){
+		$.ajax({
+			type:"POST",
+			url:'llenarciudad.php',
+			data:'departamento=' + $('#departamentonacimiento').val(),
+			success:function(r){
+				$('#ciudadnatal').html(r);
+			}
+		});
+	}
+</script>
+!-->
 </div>
+
