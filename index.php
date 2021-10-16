@@ -1,8 +1,12 @@
 <?php
 
-include("main.php");
+    $user = "root";
+    $password = "1234";
+    $server = "localhost";
+    $db = "registro";
 
-$con = conectar();
+    $conexion = new mysqli($server, $user, $password, $db);
+
 
 
 ?>
@@ -19,6 +23,12 @@ $con = conectar();
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="css/estilos.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script
+	src="https://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous"></script>
+    
     
     <title>SPA Trabajo Final</title>
 </head>
@@ -28,20 +38,22 @@ $con = conectar();
 
     <nav class="navbar navbar-expand-lg barranavegacion">
     <div class="container-fluid">
-        <a class="navbar-brand" href="index.html" data-go="inicio">SPA WEB</a>
+    <a class="navbar-brand" href="#/">
+      <img src="images/LOGO.png" alt="" width="120" height="60" class="animate__fadeInUp">
+    </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+            <a class="nav-link active" aria-current="page" href="#/">Inicio</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="#">Registro</a>
+            <a class="nav-link" href="#/registrar-usuario">Registro</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="#">Datos</a>
+            <a class="nav-link" href="#/listar-usuarios">Datos</a>
             </li>
         </ul>
         </div>
@@ -52,7 +64,7 @@ $con = conectar();
 
 
            <!-- VISTA CONTENEDOR PRINCIPAL -->
-    <div class="container-fluid" data-namespace="vistaPrincipal" id="vistaPrincipal">
+    <div class="container-fluid " data-namespace="vistaPrincipal" id="vistaPrincipal">
 
    
     
@@ -86,6 +98,8 @@ $con = conectar();
     <script src="js/validacion.js"></script>
     <script src="js/rutas.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+
     
 </body>
 </html>
