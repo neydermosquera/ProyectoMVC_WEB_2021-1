@@ -47,8 +47,12 @@ li{
 .inicio{
     margin-top: 45px;
     padding-top: 50px;
-
 }
+
+.uis{
+    margin-left: 50px;
+}
+
 h1{
     color: white;
     font-family: -webkit-pictograph;
@@ -57,9 +61,28 @@ h1{
 .textoinicio{
     padding-left: 50px;  
 }
-img{
-     border-radius: 15px;
+
+
+#imagen{
+    animation: movimiento 2.5 linear infinite;
+    border-radius: 15px;
     box-shadow: 10px 15px 10px 15px  rgb(139, 141, 137);
+}
+
+.logo{
+    box-shadow: none;
+}
+
+@keyframes movimiento {
+    0%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(20px);
+    }
+    100%{
+        transform: translateY(0);
+    }
 }
 
 .pie{
@@ -184,7 +207,7 @@ label{
     border-radius: 20px;
     justify-content: center;
     box-shadow: 2px 2px 2px 2px  rgb(170, 172, 169);
-    background-color: #3498DB;
+    background-color: #A569BD ;
 }
 
 .principal{
@@ -207,7 +230,9 @@ label{
 .botonvolver{
     border-radius: 20px;
     justify-content: center;
-    box-shadow: 5px 5px 5px 5px  rgb(224, 101, 101);
+    box-shadow: 2px 2px 2px 2px  rgb(108, 52, 131);
+    background-color: #3498DB;
+    color: white;
 }
 
 
@@ -257,13 +282,14 @@ button{
 .boton{
     border-radius: 20px;
     justify-content: center;
-    box-shadow:  2px 2px 2px 2px   rgb(156, 238, 115);
+    box-shadow:  2px 2px 2px 2px    rgb(108, 52, 131);
 }
 
 .botonvolver{
     border-radius: 20px;
     justify-content: center;
-    box-shadow: 2px 2px 2px 2px  rgb(224, 101, 101);
+    box-shadow: 2px 2px 2px 2px  rgb(108, 52, 131);
+    background-color: #3498DB;
 }
 
 .table{
