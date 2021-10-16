@@ -44,7 +44,7 @@
                         </table> <br><br>
 
                         <div class="col-sm-12 text-center">
-                            <button type="button" class="btn btn-danger botonvolver" onclick="location.href='index.html'">Volver</button>
+                            <button type="button" class="btn botonvolver" onclick="location.href='index.html'">Volver</button>
                         </div> 
 
                     </div>
