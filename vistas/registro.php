@@ -1,6 +1,27 @@
-<!--Div Registro!-->
 
-<div class="container contenedorregistro" data-namespace="registro">
+
+<?php
+
+    
+
+    $user = "root";
+    $password = "1234";
+    $server = "localhost";
+    $db = "registro";
+
+    $conexion = new mysqli($server, $user, $password, $db);
+
+    //$departamentos = "SELECT id, nombre FROM departamento";
+    //$ejecutarDepto = mysqli_query($conexion, $departamentos) or die(mysqli_error($conexion));
+
+    $tipoDocumento = "SELECT id, nombre FROM tipodocumento";
+    $ejecutarDocu = mysqli_query($conexion, $tipoDocumento) or die(mysqli_error($conexion));
+    
+    include "llenarciudad.php";
+
+?>
+
+<div class="container contenedorregistro " data-namespace="registro">
         <section class="container col-sm-11 principal 
         margin-left: 10px;
         margin-right: 10px;
@@ -26,11 +47,12 @@
 
                     <div  class="form-group has-feedback col-sm-6">
                         <select class="form-select" id="tipodocumento" name="tipodocumento">
-                            <option selected>Tipo de documento de Identidad</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                          </select>
+                        <option selected>Tipo de Documento de Identidad</option>
+                            <?php foreach ($ejecutarDocu as $opciones): ?>
+                                <option value="<?php echo $opciones['id']?>"><?php echo $opciones['nombre']?></option> 
+                            <?php endforeach ?>
+                            
+                        </select>
                     </div>
 
                     <div  class="form-group has-feedback col-sm-6">
@@ -45,21 +67,15 @@
                     </div>
 
                     <div  class="form-group has-feedback col-sm-6">
-                        <select class="form-select" id="departamentonacimiento" name="departamentonacimiento">
+                        <select class="form-select" id="departamentonacimiento" name="departamentonacimiento" onclick="muestraSelect(this.value)">
                             <option selected>Departamento</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <?php include "llenardepartamentos.php" ?>
+                                
                           </select>
                     </div>
 
-                    <div  class="form-group has-feedback col-sm-6">
-                        <select class="form-select" id="ciudadnacimiento" name="ciudadnacimiento">
-                            <option selected>Ciudad</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                          </select>
+                    <div  class="form-group has-feedback col-sm-6" id="ciudadnatal">
+                        <?php include "llenardepartamentos.php" ?>
                     </div> <br>
 
 
@@ -72,18 +88,13 @@
                     <div  class="form-group has-feedback col-sm-6">
                         <select class="form-select" id="departamentoresidencia" name="departamentoresidencia">
                             <option selected>Departamento</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <?php include "llenardepartamentos.php" ?>
                           </select>
                     </div>
 
-                    <div  class="form-group has-feedback col-sm-6">
+                    <div  class="form-group has-feedback col-sm-6" id="ciudadactual">
                         <select class="form-select" id="ciudadresidencia" name="ciudadresidencia">
                             <option selected>Ciudad</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
                           </select>
                     </div>
 
@@ -138,7 +149,7 @@
                     </div> <br> <br> <br>
 
                     <div class="col-sm-6 text-center">
-                        <button type="button" class="btn btn-danger botonvolver" onclick="location.href='index.html'">Cancelar/Volver</button>
+                        <button type="button" class="btn botonvolver" onclick="location.href='index.html'">Cancelar/Volver</button>
                     </div> <br> <br> <br>
     
                     <div class="col-sm-6 text-center">
@@ -154,3 +165,30 @@
          </div>
         </section>
     </div>
+
+<script type="text/javascript">
+	function muestraSelect(str){
+
+        var conexion;
+
+        if(str == ""){
+            document.getElementById("txtHint").innerHTML="";
+            return;
+        }
+
+        if (window.XMLHttpRequest){
+				conexion = new XMLHttpRequest();  
+			}
+
+        conexion.onreadystatechange = function(){
+            if(conexion.readyState == 4 && conexion.status == 200){
+                document.getElementById('ciudadnatal').innerHTML=conexion.responseText;
+                document.getElementById('ciudadactual').innerHTML=conexion.responseText;
+            }
+        }
+
+        conexion.open("GET", "llenarciudad.php?c="+str, true);
+        conexion.send();
+    }
+</script>
+
