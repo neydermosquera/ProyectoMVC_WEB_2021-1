@@ -54,6 +54,11 @@
         window.addEventListener('load', libreria.manejadorRutas, false);
         window.addEventListener('hashchange', libreria.manejadorRutas, false);
     }else{
-        console.log("see esta llamnando la libreria nuevamente")
+        console.log("see esta llamando a la libreria nuevamente")
     }
 })(window, document);
+
+
+$("form").click(function(event) {
+    event.preventDefault();
+  }); 
