@@ -21,34 +21,5 @@
     
     </div>
 
-    <!--<?php foreach ($ejecutarDepto as $opciones): ?>
-                                <option value="<?php echo $opciones['id']?>"><?php echo $opciones['nombre']?></option> 
-                            <?php endforeach ?>
-                            
-                            
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('#departamentonacimiento').val(1);
-		recargarLista();
-
-		$('#departamentonacimiento').change(function(){
-			recargarLista();
-		});
-	})
-</script>
-<script type="text/javascript">
-
-	function recargarLista(){
-		$.ajax({
-			type:"POST",
-			url:'llenarciudad.php',
-			data:'departamento=' + $('#departamentonacimiento').val(),
-			success:function(r){
-				$('#ciudadnatal').html(r);
-			}
-		});
-	}
-</script>
-!-->
 </div>
 
