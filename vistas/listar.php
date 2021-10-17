@@ -18,7 +18,7 @@
                                 <th>Ciudad Natal</th>
                                 <th>Depto Natal</th>
                                 <th>Email</th>
-                                <th>Telefono</th>
+                                <th>Telefono</th> 
                                 <th>Usuario</th>
                                 <th>Acción</th>
                             </thead>
