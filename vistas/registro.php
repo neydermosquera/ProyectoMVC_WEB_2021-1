@@ -1,24 +1,25 @@
-
-
 <?php
 
-
-
     $user = "root";
-    $password = "1234";
+    $password = "";
     $server = "localhost";
     $db = "registro";
 
     $conexion = new mysqli($server, $user, $password, $db);
+
+    if(!$conexion){
+        echo "Error en la conexión con el servidor";
+    }
 
     $departamentos = "SELECT id, nombre FROM departamento";
     $ejecutarDepto = mysqli_query($conexion, $departamentos) or die(mysqli_error($conexion));
 
     $tipoDocumento = "SELECT id, nombre FROM tipodocumento";
     $ejecutarDocu = mysqli_query($conexion, $tipoDocumento) or die(mysqli_error($conexion));
-    
-    
 
+    $ciudad = "SELECT id, nombre FROM ciudad";
+    $ejecutarCiu = mysqli_query($conexion, $ciudad) or die(mysqli_error($conexion));
+    
 ?>
 
 <div class="container contenedorregistro " data-namespace="registro">
@@ -32,7 +33,7 @@
             </div>
          <br>
          <div class="container">
-            <form action="" method="POST" id = "formulario" name="formulario" class="formulario">
+            <form action="vistas/registrar.php" method="POST" id = "formulario" name="formulario" class="formulario">
             <div class="row">
 
                     <div  class="form-group has-feedback col-sm-6">
@@ -70,16 +71,18 @@
                         <select class="form-select" id="departamentonacimiento" name="departamentonacimiento">
                             <option selected>Departamento</option>
                             <?php foreach ($ejecutarDepto as $opciones): ?>
-                                <option value="<?php echo $opciones['id']?>"><?php echo $opciones['nombre']?></option> 
+                            <option value="<?php echo $opciones['id']?>"><?php echo $opciones['nombre']?></option> 
                             <?php endforeach ?>
                                 
                           </select>
                     </div>
 
                     <div  class="form-group has-feedback col-sm-6" id="ciudadnatal">
-                    <select class="form-select" id="ciudadnacimiento" name="ciudadnacimiento">
-                    <option value="">Ciudad</option>
-                                  
+                        <select class="form-select" id="ciudadnacimiento" name="ciudadnacimiento">
+                            <option value="">Ciudad</option>
+                            <?php foreach ($ejecutarCiu as $opciones): ?>
+                            <option value="<?php echo $opciones['id']?>"><?php echo $opciones['nombre']?></option> 
+                            <?php endforeach ?>
                           </select>
 
                     </div> <br>
@@ -104,6 +107,9 @@
                     <div  class="form-group has-feedback col-sm-6" id="ciudadactual">
                         <select class="form-select" id="ciudadresidencia" name="ciudadresidencia">
                             <option selected>Ciudad</option>
+                            <?php foreach ($ejecutarCiu as $opciones): ?>
+                            <option value="<?php echo $opciones['id']?>"><?php echo $opciones['nombre']?></option> 
+                            <?php endforeach ?>
                           </select>
                     </div>
 
@@ -152,58 +158,31 @@
                         </div>
                         <p class="formulario__input-error">Las contraseñas no coninciden.</p>
                     </div>
+                    
+                    <div class="formulario__mensaje col-sm-12 text-center btn-success" id="formulario__mensaje">
+                    <p class="formulario__mensaje-exito"><i class="fa fa-check-circle"></i> <b> Registro Éxitoso.</b></p>
+                    </div>
+                    
 
-                    <div class="formulario__mensaje col-sm-12 text-center btn-danger" id="formulario__mensaje">
-                        <p><i class="fa fa-exclamation-triangle"></i> Error: <b>Complete correctamente el formulario de registro.</b></p>
-                    </div> <br> <br> <br>
-
-                    <div class="col-sm-6 text-center">
-                        <button type="button" class="btn botonvolver" onclick="location.href='index.html'">Cancelar/Volver</button>
+                    <div class="col-sm-6 text-center divbotones">
+                        <button type="button" class="btn botonvolver" onclick="location.href='#inicio.html'">Cancelar/Volver</button>
                     </div> <br> <br> <br>
     
-                    <div class="col-sm-6 text-center">
-                        <button type="submit" class="btn btn-success boton">Registrar</button>
+                    <div class="col-sm-6 text-center divbotones">
+                        <input type="submit" name="registrar" class="btn btn-success boton">
                     </div> <br> <br> <br>
 
-                    <div class="formulario__mensaje col-sm-12 text-center btn-success" id="formulario__mensaje">
-                        <p class="formulario__mensaje-exito"><i class="fa fa-check-circle"></i> <b> Registro Éxitoso.</b></p>
-                    </div> 
-
+                    <div class="formulario__mensaje col-sm-12 text-center btn-danger " id="formulario__mensaje">
+                    <p><i class="fa fa-exclamation-triangle"></i> Error: <b>Complete correctamente el formulario de registro.</b></p>
+                    </div> <br> <br> <br>
             </div>
             </form>
+            <?php include "registrar.php" ?>
          </div>
         </section>
     </div>
+    <script src="js/validacion.js"></script>
+   
 
-    <script type="text/javascript">
-      $(document).ready(function(){
-        var discos = $('#ciudadnacimiento');
-
-        //Ejecutar accion al cambiar de opcion en el select de las bandas
-        $('#departamentonacimiento').change(function(){
-          var departamento_id = $(this).val(); //obtener el id seleccionado
-
-          if(departamento_id !== ''){ //verificar haber seleccionado una opcion valida
-
-            /*Inicio de llamada ajax*/
-            $.ajax({
-              data: {departamento_id:departamento_id}, //variables o parametros a enviar, formato => nombre_de_variable:contenido
-              dataType: 'html', //tipo de datos que esperamos de regreso
-              type: 'POST', //mandar variables como post o get
-              url: 'llenarciudad.php' //url que recibe las variables
-            }).done(function(data){ //metodo que se ejecuta cuando ajax ha completado su ejecucion             
-
-              departamento_id.html(data); //establecemos el contenido html de discos con la informacion que regresa ajax             
-              departamento_id.prop('disabled', false); //habilitar el select
-            });
-            /*fin de llamada ajax*/
-
-          }else{ //en caso de seleccionar una opcion no valida
-            departamento_id.val(''); //seleccionar la opcion "- Seleccione -", osea como reiniciar la opcion del select
-            departamento_id.prop('disabled', true); //deshabilitar el select
-          }    
-        });
-
-      });
-    </script>    
+       
 
