@@ -11,12 +11,13 @@
         echo "Error en la conexión con el servidor";
     }
 
-    $consulta = "SELECT p.id, p.nombres, p.apellidos, td.nombre as tipodocumento, p.documento, p.direccion, c.nombre as ciudadactual, d.nombre as deptoactual, p.fechanacimiento, d.nombre as deptonatal, c.nombre as ciudadnatal, p.email, p.telefono, p.usuario  FROM persona p, departamento d, ciudad c, tipodocumento td 
+    $consulta = "SELECT p.id, p.nombres, p.apellidos, td.nombre as tipodocumento, p.documento, p.direccion, c.nombre as ciudadactual, d.nombre as deptoactual, p.fechanacimiento, dnatal.nombre as deptonatal, cnatal.nombre as ciudadnatal, p.email, p.telefono, p.usuario 
+    FROM persona p, departamento d, ciudad c, tipodocumento td, ciudad cnatal, departamento dnatal 
     WHERE p.idtipodocumento = td.id AND 
-    p.idciudad = c.id AND
-    p.iddepartamento = d.id AND
-    p.iddepartamento = d.id AND
-    p.idciudadnatal = c.id;";
+    p.idciudad = c.id AND 
+    p.iddepartamento = d.id AND 
+    p.iddepartamentonatal = dnatal.id AND 
+    p.idciudadnatal = cnatal.id;";
 
     $resultado = mysqli_query($conexion, $consulta);
     
