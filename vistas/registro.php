@@ -19,9 +19,10 @@
 
     $ciudad = "SELECT id, nombre FROM ciudad";
     $ejecutarCiu = mysqli_query($conexion, $ciudad) or die(mysqli_error($conexion));
+
+
     
 ?>
-
 <div class="container contenedorregistro " data-namespace="registro">
         <section class="container col-sm-11 principal 
         margin-left: 10px;
@@ -33,7 +34,7 @@
             </div>
          <br>
          <div class="container">
-            <form action="vistas/registrar.php" method="POST" id = "formulario" name="formulario" class="formulario">
+            <form action="index.php#/registrar-usuario" method="POST" id = "formulario" name="formulario" class="formulario">
             <div class="row">
 
                     <div  class="form-group has-feedback col-sm-6">
