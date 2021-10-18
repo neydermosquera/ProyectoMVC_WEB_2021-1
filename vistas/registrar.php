@@ -23,8 +23,6 @@
     $usuario = $_POST['usuario'];
     $password = $_POST['password'];
 
-    var_dump($nombres);
-    echo $nombres .'Welcome, your email adress is: '. $email;
 
     $insertar = "INSERT INTO persona (nombres, apellidos, idtipodocumento, documento, direccion, idciudad, iddepartamento, fechanacimiento, iddepartamentonatal, idciudadnatal, email, telefono, usuario, password) 
     VALUES ('$nombres','$apellidos','$tipodocumento','$documento','$address','$ciudadresidencia','$departamentoresidencia','$birthday','$departamentonacimiento','$ciudadnacimiento ','$email','$telefono','$usuario','$password')";
@@ -37,9 +35,8 @@
     }else{
         echo 'incorrecto';
     }
-} else{
-    '<script> location.replace("index.html")';
-}
+} 
+
 ?>
 
 
