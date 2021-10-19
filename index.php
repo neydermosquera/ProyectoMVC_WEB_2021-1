@@ -46,11 +46,36 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="css/estilos.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
- 
-    
-    
     <title>SPA Trabajo Final</title>
 </head>
+<script type="text/javascript">
+
+function confirmarEliminar(){
+      var respuesta = confirm("¿Estás seguro de que deseas ELIMINAR éste usuario?");
+        if(respuesta == true){
+                return true;
+        }else{
+            return false;
+        }
+  }
+
+  function confirmarEditar(){
+      var respuesta = confirm("¿Estás seguro de que deseas EDITAR éste usuario?");
+        if(respuesta == true){
+                return true;
+        }else{
+            return false;
+        }
+  }
+
+  function confirmarRegistro(){
+      var respuesta = confirm("Usuario Registrado");
+        
+        return true;
+      
+  }
+
+</script>
 <body>
 
     <!--Barra de navegación!-->
@@ -80,15 +105,16 @@
 
     </nav>
 
+      <!-- FIN BARRA DE NAVEGACIÓN!-->
+
 
 
            <!-- VISTA CONTENEDOR PRINCIPAL -->
     <div class="container-fluid " data-namespace="vistaPrincipal" id="vistaPrincipal">
-
-   
-    
-
     </div>
+          <!--  FIN VISTA CONTENEDOR PRINCIPAL -->
+
+
 
 
 
@@ -117,6 +143,7 @@
     <script src="js/validacion.js"></script>
     <script src="js/rutas.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 
     
     
