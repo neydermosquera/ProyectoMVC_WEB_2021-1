@@ -29,8 +29,8 @@
         margin-right: 10px;
         ">
             <br>
-            <div class="p-1 mb-1  text-white title">
-            <h3 class=" text-center">Registro de Usuario</h3>
+            <div class="p-1 mb-1  text-white title bg-success">
+            <h3 class=" text-center ">Registro de Usuario</h3>
             </div>
          <br>
          <div class="container">
@@ -65,7 +65,7 @@
                     <div  class="form-group has-feedback col-sm-12">
                         <p>Fecha y Lugar de nacimiento:</p>
                         <i class="fa fa-birthday-cake form-control-feedback"></i>
-                        <input type="date" class="form-control" placeholder="Fecha de Nacimiento" id="birthday" name="birthday" value="">
+                        <input type="date" class="form-control" placeholder="Fecha de Nacimiento" id="birthday" name="birthday">
                     </div>
 
                     <div  class="form-group has-feedback col-sm-6">
@@ -166,11 +166,11 @@
                     
 
                     <div class="col-sm-6 text-center divbotones">
-                        <button type="button" class="btn botonvolver" onclick="location.href='#inicio.html'">Cancelar/Volver</button>
+                        <button type="button" class="btn botonvolver" onclick="location.href='#inicio.php'">Cancelar/Volver</button>
                     </div> <br> <br> <br>
     
                     <div class="col-sm-6 text-center divbotones">
-                        <input type="submit" name="registrar" class="btn btn-success boton">
+                        <input type="submit" name="registrar" class="btn btn-success boton " value="Registrar"  onclick="return confirmarRegistro()">
                     </div> <br> <br> <br>
 
                     <div class="formulario__mensaje col-sm-12 text-center btn-danger " id="formulario__mensaje">
