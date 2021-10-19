@@ -9,39 +9,49 @@
 
     if(!$conexion){
         echo "Error en la conexión con el servidor";
+    }else{
+
+        $consulta = "SELECT p.id, p.nombres, p.apellidos, td.nombre as tipodocumento, p.documento, p.direccion, c.nombre as ciudadactual, d.nombre as deptoactual, p.fechanacimiento, dnatal.nombre as deptonatal, cnatal.nombre as ciudadnatal, p.email, p.telefono, p.usuario 
+        FROM persona p, departamento d, ciudad c, tipodocumento td, ciudad cnatal, departamento dnatal 
+        WHERE p.idtipodocumento = td.id AND 
+        p.idciudad = c.id AND 
+        p.iddepartamento = d.id AND 
+        p.iddepartamentonatal = dnatal.id AND 
+        p.idciudadnatal = cnatal.id;";
+    
+        $resultado = mysqli_query($conexion, $consulta);
+
+
     }
 
-    $consulta = "SELECT p.id, p.nombres, p.apellidos, td.nombre as tipodocumento, p.documento, p.direccion, c.nombre as ciudadactual, d.nombre as deptoactual, p.fechanacimiento, dnatal.nombre as deptonatal, cnatal.nombre as ciudadnatal, p.email, p.telefono, p.usuario 
-    FROM persona p, departamento d, ciudad c, tipodocumento td, ciudad cnatal, departamento dnatal 
-    WHERE p.idtipodocumento = td.id AND 
-    p.idciudad = c.id AND 
-    p.iddepartamento = d.id AND 
-    p.iddepartamentonatal = dnatal.id AND 
-    p.idciudadnatal = cnatal.id;";
+   
 
-    $resultado = mysqli_query($conexion, $consulta);
-    
+
+
+
 ?>
+
+
 
 <div class=" contenedorlistado scrollme" data-namespace="registro">
     
-                    <div class="contenido">
-                        <h2>Datos registrados</h2> <br><br>
+                    <div class="contenido" style="padding-left: 50px; padding-right: 50px;">
+                        <h2 style="margin-left: 50px;"><strong> Usuarios registrados</strong></h2> <br><br>
                         <div class="row">
                         </div><!--Cierre botones-->
 
                         <table class="table table-striped table-responsive">
-                            <thead class="text-center">
+                            <thead class="text-center bg-dark text-white">
                                 <th>Nombres</th>
                                 <th>Apellidos</th>
-                                <th>T.D</th>
+                                <th>Tipo de documento</th>
                                 <th>Documento</th>
                                 <th>Dirección</th>
                                 <th>Ciudad</th>
-                                <th>Depto</th>
+                                <th>Departamento</th>
                                 <th>Fecha Nacimiento</th>
                                 <th>Ciudad Natal</th>
-                                <th>Depto Natal</th>
+                                <th>Departamento Natal</th>
                                 <th>Email</th>
                                 <th>Telefono</th> 
                                 <th>Usuario</th>
@@ -68,23 +78,27 @@
                                 <td><?php echo $mostrar['email']; ?></td>
                                 <td><?php echo $mostrar['telefono']; ?></td>
                                 <td><?php echo $mostrar['usuario']; ?></td>
-                                <td class="text-center"><a href="#/editar-usuario?id=<?php echo $mostrar['id'];?>" alt="Editar"><i class="fa fa-pencil"></i></a> </td>
-                                <td class="text-center"><a href="#/eliminar-usuario?id=<?php echo $mostrar['id'];?>" alt="Eliminar"><i class="fa fa-trash"></i></a> </td>
+                                <td><a  class="btn btn-outline-dark" style="width: 50px;" href="vistas/editar.php?id=<?php echo $mostrar['id'];?>" alt="Eliminar" onclick="return confirmarEditar()"><i class="fa fa-pencil"></a></td>
+                                <td><a  class="btn btn-outline-dark" style="width: 50px;" href="vistas/eliminar.php?id=<?php echo $mostrar['id'];?>" alt="Eliminar" onclick="return confirmarEliminar()"><i class="fa fa-trash"></a></td>
                                 </tr> 
                                     
                                <?php
                                 }
                                 
                                 ?>
-                                
                             </tbody>
 
                         </table> <br><br>
 
                         <div class="col-sm-12 text-center">
-                            <button type="button" class="btn botonvolver" onclick="location.href='index.php'">Volver</button>
+                            <button type="button" class="btn botonvolver" onclick="location.href='#index.php'">Volver</button>
                         </div> 
 
                     </div>
 
-    </div>
+</div>
+
+
+
+
+
