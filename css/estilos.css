@@ -38,11 +38,13 @@ li{
     margin-bottom: 100px;
     padding-top: 30px;
     padding-bottom: 25px;
-    margin-right: auto;
-    margin-left: auto;
     width: auto;
 
+}
 
+div.contenido{
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
 .inicio{
@@ -94,6 +96,8 @@ h1{
 .scrollme{
     overflow-x: auto;
 }
+
+
 
 
 
@@ -215,6 +219,13 @@ label{
     justify-content: center;
     box-shadow: 2px 2px 2px 2px  rgb(170, 172, 169);
     background-color: #A569BD ;
+}
+
+.titleActualizar{
+    border-radius: 20px;
+    justify-content: center;
+    box-shadow: 2px 2px 2px 2px  rgb(170, 172, 169);
+    background-color: #3ab362 ;
 }
 
 .principal{
